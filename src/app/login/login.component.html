@@ -1,0 +1,42 @@
+<div class="row w-100 d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <div class="row w-75 mt-5" style="height: 470px;">
+        <div class="col-md-6 shadow d-flex justify-content-center align-items-center flex-column p-5">
+            <div class="p-3 d-flex justify-content-center align-items-center"
+                style="height: 70px; width: 70px; border: 3px solid red; border-radius: 50%;">
+                <i class="fa-solid fa-user fa-2x text-danger"></i>
+            </div>
+            <h2 class="text-center text-danger d-flex">Welcome User</h2>
+            <form class="border rounded p-3 w-100 shadow mt-3" [formGroup]="loginForm" (ngSubmit)="login()">
+                <div class="mb-4 mt-3">
+                    <input type="text" placeholder="Enter Email" class="form-control"
+                    formControlName="email"  name="email">
+                    <span class="text-danger" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+                        Invalid Email
+                    </span>
+                </div>
+                <div class="mb-4">
+                    <input type="text" placeholder="Enter Password" class="form-control"
+                    formControlName="password" name="password"
+                    >
+                    <span class="text-danger" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+                        Invalid Password
+                    </span>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-danger w-100" type="submit" [disabled]="loginForm.invalid">LOGIN</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 shadow p-0 d-flex justify-content-center align-items-center flex-column text-light" style="background-image: url('https://img.freepik.com/free-photo/black-friday-elements-assortment_23-2149074075.jpg');
+         background-size: cover;">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <h4> <i class="fa-brands fa-slack fa-spin me-3 ms-2"></i>GLOBAL MART</h4>
+                <h3>Didn't Have An Account</h3>
+                <p class="p-5">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident harum inventore sunt
+                    quos quis sed, eum aut, nisi magni adipisci facilis, quo eveniet labore optio esse. Repudiandae
+                    nobis cupiditate labore.</p>
+                <a class="btn btn-outline-light" routerLink="/user/register"> SIGN UP</a>
+            </div>
+        </div>
+    </div>
+</div>

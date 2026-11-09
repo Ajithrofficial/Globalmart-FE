@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg bg-danger">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light"routerLink=""><i class="fa-brands fa-slack fa-spin me-2 ms-2"></i><span style="font-size: 15px; font-weight: 700;">GLOBAL MART</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="navbar-nav ms-auto">
+            <div class="d-flex">
+                <a class="nav-link" routerLink="/wishlist">
+                    <button class="btn btn-outline-light"><i
+                    class="fa-solid fa-heart fa-beat me-2"></i>Wishlist <span class="badge text-bg-secondary ms-1">{{wishListCount}}</span></button>
+                </a>
+                <a class="nav-link" routerLink="/cart">
+                    <button class="btn btn-outline-light"> <i
+                        class="fa-solid fa-cart-shopping fa-beat me-2"></i>Cart <span class="badge text-bg-secondary ms-1">4</span></button>
+                </a>
+                <a class="nav-link" routerLink="user/login" *ngIf="!loginUserName">
+                    <button class="btn btn-outline-light"><i class="fa-solid fa-user"></i></button>
+                </a>
+                <a class="nav-link" (click)="logout()" *ngIf="loginUserName">
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-power-off"></i></button>
+                  <span class="text-light ms-2 fw-bold">{{loginUserName | uppercase}}</span>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </nav>
