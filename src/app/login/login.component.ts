@@ -10,15 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private fb: FormBuilder, private apiService:ApiService, private router: Router) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { }
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
   })
-  login(){
+  login() {
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
-    console.log(email,password);
+    console.log(email, password)
     const user = {
       email: email,
       password: password,
@@ -27,8 +27,8 @@ export class LoginComponent {
       next: (res: any) => {
         console.log("user login ");
         console.log(res);
-        sessionStorage.setItem("username", res.existingUser.username)
-        sessionStorage.setItem("token", res.token)
+        sessionStorage.setItem("username",res.existingUser.username)
+        sessionStorage.setItem("token",res.token)
         Swal.fire({
           title: 'Login Successfully',
           text: `${res.existingUser.username} logged in successfully`,
@@ -36,7 +36,7 @@ export class LoginComponent {
         });
         this.router.navigateByUrl("/")
       },
-      error: (res)=>{
+      error: (res) => {
         Swal.fire({
           title: 'Error',
           text: `Invalid email or password`,
@@ -45,5 +45,4 @@ export class LoginComponent {
       }
     })
   }
-}   
-
+}

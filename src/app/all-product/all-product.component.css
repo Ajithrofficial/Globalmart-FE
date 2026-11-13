@@ -1,4 +1,6 @@
-.card:hover{
+.card:hover {
     scale: 1.05;
     transition: 0.5s;
 }
+.banner-img{height:350px;object-fit:cover}
+.product-img{object-fit:contain;cursor:pointer}

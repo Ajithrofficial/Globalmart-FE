@@ -13,9 +13,12 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-// for calling API we need httpClientModule
-import { HttpClientModule } from '@angular/common/http'
+// for calling api we need HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { NgxUiLoaderModule } from "ngx-ui-loader";
+import { NgxSpinnerModule } from "ngx-spinner";
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    NgxUiLoaderModule,
+    NgxSpinnerModule,
+    ReactiveFormsModule,
+    NgxPayPalModule
   ],
   providers: [],
   bootstrap: [AppComponent]

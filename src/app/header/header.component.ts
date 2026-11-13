@@ -8,25 +8,30 @@ import { ApiService } from '../services/api.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private router:Router, private apiService:ApiService){}
+  constructor(private router: Router, private apiService: ApiService) { }
   loginUserName: any = "";
   wishListCount = 0;
+  cartCount:any;
   ngOnInit(): void {
-    if(sessionStorage.getItem("username")){
+    if (sessionStorage.getItem("username")) {
       this.apiService.getWishlistCount();
-      this.loginUserName = sessionStorage.getItem('username')
-      this.apiService.wishlistCount.subscribe((res: any) =>{
+      this.loginUserName = sessionStorage.getItem('username');
+      this.apiService.wishlistCount.subscribe((res: any) => {
         this.wishListCount = res
       })
+      this.apiService.getCartCount();
+      this.apiService.cartCount.subscribe((res)=>{
+        this.cartCount = res;
+      })
     }
-    else{
+    else {
       this.loginUserName = "";
     }
-}
-logout(){
-  this.loginUserName = "";
-  sessionStorage.removeItem("username");
-  sessionStorage.removeItem("token");
-  this.router.navigateByUrl("/")
- }
+  }
+  logout() {
+    this.loginUserName = "";
+    sessionStorage.removeItem("username");
+    sessionStorage.removeItem("token");
+    this.router.navigateByUrl("/")
+  }
 }

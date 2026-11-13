@@ -10,14 +10,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor(private fb: FormBuilder, private apiService:ApiService, private router:Router) { }
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) { }
   registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
     email: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')]]
   })
+
   registerUser() {
-    if(this.registerForm.valid){
+    if (this.registerForm.valid) {
       const username = this.registerForm.value.username;
       const email = this.registerForm.value.email;
       const password = this.registerForm.value.password;
@@ -26,22 +27,21 @@ export class RegisterComponent {
         email: email,
         password: password
       }
-      // Call the api method to register user
+      // call the api method to register user
       this.apiService.userRegisterApi(user).subscribe({
-        next:(res)=>{
+        next: (res) => {
           console.log("user register");
           console.log(res)
-      
           Swal.fire({
             title: 'Success',
             text: `${res}`,
             icon: 'success',
-          })
+          });
           this.router.navigateByUrl("/user/login")
         },
-        error:(err)=>{
-          console.log(err);
-          if(err.status === 406){
+        error: (err) => {
+          console.log(err)
+          if (err.status === 406) {
             Swal.fire({
               title: 'Error!',
               text: 'User already exist',
@@ -55,10 +55,11 @@ export class RegisterComponent {
               icon: 'error',
             })
           }
+
         }
       })
     }
-    else{
+    else {
       alert("Not valid")
     }
   }

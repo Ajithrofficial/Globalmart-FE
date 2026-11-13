@@ -9,31 +9,33 @@ import { ApiService } from '../services/api.service';
 })
 export class ViewProductComponent implements OnInit {
   // inject ActivatedRoute class, for extracting id from url
-  productData: any;
-  constructor(private router: ActivatedRoute, private apiService: ApiService) { }
+  productData:any;
+  constructor(private router: ActivatedRoute,
+    private apiService:ApiService
+  ) { }
   ngOnInit(): void {
-    this.router.params.subscribe((res: any) =>{
+    this.router.params.subscribe((res: any) => {
       const id = res.id;
       console.log("id", id);
       this.getProductById(id)
     })
   }
-  getProductById(id: any){
+  getProductById(id: any) {
     this.apiService.getAllProductsByIdApi(id).subscribe({
-      next: (res)=>{
-        console.log("Product Details");
-        console.log(res);
+      next:(res)=>{
+        console.log("Product details");
+        console.log(res)
         this.productData = res;
       },
       error:(res)=>{
-        console.log(res);
+        console.log(res)
       }
     })
   }
   addToWishlist(data:any){
 
   }
-  addTocart(data: any){
-
+  addTocart(data:any){
+    
   }
 }
